@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+#wrapper{
+	border:1px solid black;
+	border-radius:2em;
+	width:730px;
+	margin:5px auto;
+	padding: 10px;
+	background-color:#CFC;
+}#wrapper2{
+	border:1px solid GREEN;
+	border-radius:2em;
+	width:710px;
+	margin:5px auto;
+	padding: 10px;
+	background-color:#CFC;
+}
+body {
+	background-color:#3CF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	color:#006;
+	width:740px;
+	margin:5px auto;
+	padding:10px;
+}
+header{
+	border:1px solid black;
+	border-radius:2em;
+	width:740px;
+	margin:0px auto;
+	padding:5px;
+	background: #ff9 ;
+}
+h4{
+	float:right;
+	}
+header nav{
+	
+	}
+footer{
+	border:1px solid black;
+	border-radius:2em;
+	width:740px;
+	margin:0px auto;
+	padding:10px;
+	background: #ff9;
+	
+}
+
+h2,h3{
+	color: #903;
+}
+
+header h1,h2{
+	color: #903;
+	clear:both;
+	}
+a:link, a:visited{
+	color: #006;
+	text-decoration:none;
+}
+body nav a:hover{
+	text-decoration:blink;
+	color:#903;
+	background-color:#3CF;
+}
+a:hover{
+	text-decoration:blink;
+	color:#903;
+	background-color:#FC0;
+}
+a:ul{
+	list-style-type:none;
+	text-decoration:none;
+}
+nav a:link, nav a:visited{
+	background: #FF9;
+	display: block;
+	margin: 1em;
+	padding: 3px;
+	border: 2px solid red;
+	border-radius: 2em;
+	box-shadow: 5px 5px 5px #888;
+}
+nav li{
+	float : left;
+}
+nav ul{
+	text-decoration:none;
+	list-style-type: none;
+}
+hgroup ul{
+	text-decoration:none;
+	list-style-type: none;
+}
+hgroup, nav p, footer{
+	color: #006;
+	text-decoration:none;
+}
+span.highlight {
+	color: #903;
+	font-weight:bold;
+	font-style:italic;
+	letter-spacing: 0.05em;
+}
+span.highlight2 {
+	color: #F93;
+	font-weight:bold;
+	font-style:italic;
+	letter-spacing: 0.05em;
+}
+body nav{
+	margin: 0 auto;
+	text-align:center;
+	width:50em;
+	}
+.box1{
+	border:1px solid red;
+	color: #fff;
+	margin: 5px;
+	float:left;
+	width: 35em;
+}
+.box2{
+	border:1px solid black;
+	border-radius:2em;
+	padding:5px;
+	color: #000;
+	margin: 5px;
+	float:right;
+	width:18em;
+	background:#3CF;
+}
+.box3{
+	border:1px solid black;
+	border-radius:2em;
+	padding:5px;
+	color: #000;
+	margin: 5px;
+	float:right;
+	width:18em;
+	background:#3CF;
+}
+header p{
+	margin:5px;
+	float:right;
+}
