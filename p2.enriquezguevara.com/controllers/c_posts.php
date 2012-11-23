@@ -37,7 +37,7 @@ class posts_controller extends base_controller {
 	
 	}*/public function index() {
 		$client_files = Array("/css/style.css");
-		$this->template->client_files = utils::load_client_files($client_files);
+		$this->template->client_files = Utils::load_client_files($client_files);
 	# Set up view
 	$this->template->content = View::instance('v_posts_index');
 	$this->template->title   = "All the posts";
@@ -63,10 +63,13 @@ class posts_controller extends base_controller {
 	# Connections string example: 10,7,8 (where the numbers are the user_ids of who this user is following)
 
 	# Now, lets build our query to grab the posts
-	$q = "SELECT * 
+	if(empty($connections_string)) {
+	# If the user isn't following anyone, this prevents a SQL error
+	Router::redirect("/posts/users");
+} else {$q = "SELECT * 
 		FROM posts 
 		JOIN users USING (user_id)
-		WHERE posts.user_id IN (".$connections_string.")";
+		WHERE posts.user_id IN (".$connections_string.")";}
 		 # This is where we use that string of user_ids we created
 				
 	# Run our query, store the results in the variable $posts
@@ -109,7 +112,7 @@ class posts_controller extends base_controller {
 		# Quick and dirty feedback
 		
 		#echo "Your post has been added. <a href='/posts/add'>Add another?</a>";
-													Router::redirect("/posts/index");
+													Router::redirect("/users/profile");
 
 	}
 	

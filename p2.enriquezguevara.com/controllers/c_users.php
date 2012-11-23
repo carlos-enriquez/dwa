@@ -71,7 +71,8 @@ class users_controller extends base_controller{
 				# Insert this user into the database
 				#$user_id = 	
 				DB::instance(DB_NAME)->insert('users', $_POST);
-					Router::redirect("/users/login/");
+					Router::redirect("/users/login/");//login change this
+
 				
 				# For now, just confirm they've signed up - we can make this fancier later
 				#I believe u need and if
@@ -96,7 +97,7 @@ class users_controller extends base_controller{
 	
 	public function login(){
 		$client_files = Array("/css/style.css");
-		$this->template->client_files = utils::load_client_files($client_files);
+		$this->template->client_files = Utils::load_client_files($client_files);
 
 		$this->template->content = View::instance('v_users_login');
 		$this->template->title = "Login";
@@ -139,6 +140,45 @@ public function p_login() {
 	
 
 }
+
+public function p_reset() {
+	
+	# Hash submitted password so we can compare it against one in the db
+	$_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+	
+	# Search the db for this email and password
+	# Retrieve the token if it's available
+	$q = "SELECT token 
+		FROM users 
+		WHERE email = '".$_POST['email']."' 
+		AND password = '".$_POST['password']."'";
+	
+	$token = DB::instance(DB_NAME)->select_field($q);	
+				
+	# If we didn't get a token back, login failed
+	
+					if($_POST['email']=="" or $_POST['password']==""){
+						Router::redirect("/users/failed/");
+					}else{
+							if($token=="") {
+			
+								# Send them back to the login page
+								Router::redirect("/users/failed/");
+			
+								# But if we did, login succeeded! 
+							} else {
+								if($_POST['repassword']== $_POST['renewpassword'])
+												
+								# Store this token in a cookie
+								@setcookie("token", $token, strtotime('+1 year'), '/');
+		
+								
+								Router::redirect("/users/profile/");
+							}
+					}
+	
+
+}
 		
 	public function failed(){
 		$client_files = Array("/css/style.css");
@@ -152,6 +192,10 @@ public function p_login() {
 		$this->template->content = View::instance('v_users_forgot');
 		echo $this->template;
 	}
+	
+	
+	
+	
 		public function reset(){
 		$client_files = Array("/css/style.css");
 		$this->template->client_files = utils::load_client_files($client_files);
@@ -203,7 +247,44 @@ $this->template->content = View::instance('v_users_logout');
 		#$this->template->client_files = utils::load_client_files($client_files);
 		
 		#render the view
-		echo $this->template;
+		#echo $this->template;
+			$q = "SELECT * 
+		FROM users_users
+		WHERE user_id = ".$this->user->user_id;
+	
+	# Execute our query, storing the results in a variable $connections
+	$connections = DB::instance(DB_NAME)->select_rows($q);
+	
+	# In order to query for the posts we need, we're going to need a string of user id's, separated by commas
+	# To create this, loop through our connections array
+	$connections_string = "";
+	foreach($connections as $connection) {
+		$connections_string .= $connection['user_id_followed'].",";
+	}
+	
+	# Remove the final comma 
+	$connections_string = substr($connections_string, 0, -1);
+	
+	# Connections string example: 10,7,8 (where the numbers are the user_ids of who this user is following)
+
+	# Now, lets build our query to grab the posts
+	if(empty($connections_string)) {
+	# If the user isn't following anyone, this prevents a SQL error
+	Router::redirect("/posts/users");
+} else {$q = "SELECT * 
+		FROM posts 
+		JOIN users USING (user_id)
+		WHERE posts.user_id IN (".$connections_string.")";}
+		 # This is where we use that string of user_ids we created
+				
+	# Run our query, store the results in the variable $posts
+	$posts = DB::instance(DB_NAME)->select_rows($q);
+	
+	# Pass data to the view
+	$this->template->content->posts = $posts;
+	
+	# Render view
+	echo $this->template;
 		}
 		}
 	}
