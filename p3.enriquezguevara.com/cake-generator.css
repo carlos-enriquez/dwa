@@ -1,0 +1,188 @@
+* {
+	font-family:verdana;
+}
+
+#wrapper {
+	width:960px;
+	margin:0px auto;
+}
+
+h1 {	
+	text-align:center;
+	font-size:30px;
+	margin-top:25px;
+	margin-bottom:25px;
+}
+
+#left-side {
+	width:425px;
+	margin-right:50px;
+	float:left;
+}
+
+#right-side {
+	width:400px;
+	float:left;
+}
+
+#base {
+	background-image:url('images/base_vainilla.png');
+	background-repeat:no-repeat;
+	position:relative;
+	height:710px;
+	width:625px;
+	margin:0px auto;
+	
+}
+
+#top {
+	
+	width:710px;
+	height:625px;
+	position:relative;
+	top:0px;
+	left:0px;
+	overflow:hidden;
+}
+#syrup {
+	
+	width:710px;
+	height:625px;
+	position:relative;
+	top:0px;
+	left:0px;
+	overflow:hidden;
+}
+.syrup-choice.choice-1 {
+background-image:url('images/top_vainilla.png');
+}
+
+.syrup-choice.choice-2 {
+	background-image:url('images/top_chocolate.png');
+}
+
+.syrup-choice.choice-3 {
+	background-image:url('images/top_strawberry.png');
+}
+.syrup-choice.choice-4 {
+	background-image:url('images/top_blue.png');
+}
+
+#bottom {
+	
+	width:710px;
+	height:625px;
+	position:relative;
+	top:0px;
+	left:0px;
+	overflow:hidden;
+}
+.bottom-choice.choice-1 {
+background-image:url('images/bottom_berry.png');
+}
+
+.bottom-choice.choice-2 {
+	background-image:url('images/bottom_strawberry.png');
+}
+
+.bottom-choice.choice-3 {
+	background-image:url('images/bottom_cookie.png');
+}
+
+.bottom-choice.choice-4 {
+	background-image:url('images/bottom_nuez.png');
+}
+
+.bottom-choice.choice-5 {
+	background-image:url('images/bottom_cherry.png');
+}
+
+
+
+.footer {
+	clear:both;
+}
+
+
+h2 {
+	font-family:Verdana;
+	font-size:15px;
+	margin-top:30px;
+	margin-bottom:5px;
+	border-bottom:1px dotted #ccc;
+}
+
+.base-choice {
+	cursor:pointer;
+	width:30px;
+	height:30px;
+	float:left;
+	margin-right:5px;
+}
+
+.top-choice {
+	cursor:pointer;
+	width:80px;
+	height:35px;
+	
+	float:left;
+	margin-right:5px;
+}
+
+.top-choice.choice-1 {
+background-image:url('images/top_mora.png');
+}
+
+.top-choice.choice-2 {
+	background-image:url('images/top_bluemora.png');
+}
+
+.top-choice.choice-3 {
+	background-image:url('images/top_fresas.png');
+}
+
+.top-choice.choice-4 {
+	background-image:url('images/top_cherry.png');
+}
+.top-choice.choice-5 {
+	background-image:url('images/top_banana.png');
+}
+	
+.top-choice.choice-6 {
+	background-image:url('images/happybday.png');
+}
+
+.top-choice.choice-7 {
+	background-image:url('images/graduate.png');
+}
+.top-choice.choice-8 {
+	background-image:url('images/navidad.png');
+}
+
+.base-choice.chocolate {
+	background-color:chocolate;
+}
+
+.base-choice.beige {
+	background-color:beige;
+}
+
+.base-choice.hotpink {
+	background-color:hotpink;
+}
+
+.syrup-choice {
+	cursor:pointer;
+}
+
+.draggable {
+	cursor:move;
+	
+}
+
+.new-draggable {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
