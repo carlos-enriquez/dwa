@@ -1,6 +1,8 @@
 $(document).ready(function() {
 		
 	/*-----------------------------------------------------------------------------------------------*/
+	
+	
 	$('.base-choice').click(function() {
 	$('.draggable').remove();
 		$('#base').css('background-color', 'white');
@@ -18,10 +20,10 @@ $(document).ready(function() {
 	
 	$('.syrup-choice').click(function() {
 	
-		// Figure out which image we should use
+		// Select image we are going to use
 		var image = $(this).css('background-image');
 		
-		// Change the background image of the canvas
+		// Change the background image of the div syrup
 		$('#syrup').css('background-image', image);
 	
 	})
